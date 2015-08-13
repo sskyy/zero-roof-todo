@@ -1,0 +1,21 @@
+{
+  "name": "zero-roof-todo",
+  "version": "0.2.0",
+  "keywords": [
+    "zero module"
+  ],
+  "description": "User module for Zero.",
+  "zero": {
+    "dependencies": {
+      "bus": "^0.0.1",
+      "request": "^0.0.1",
+      "roof": "^0.0.1"
+    }
+  },
+  "author": "jiamiu",
+  "dependencies": {
+    "core-js": "^1.0.0",
+    "lodash.isplainobject": "^3.2.0",
+    "superagent": "^1.2.0"
+  }
+}

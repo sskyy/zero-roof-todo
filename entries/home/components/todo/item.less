@@ -1,0 +1,85 @@
+.todo-item{
+    margin: 10px;
+  position: relative;
+    background: #fff;
+    padding: 18px ;
+    margin-bottom: 4px;
+    border-bottom : #eee;
+    border-width:0px ;
+    border-style:solid;
+    border-top : 0;
+    border-right : 0;
+    border-left-width : 4px;
+    border-left-color : #2db7f5 ;
+    border-left-style: solid;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07);
+
+    display: flex;
+    justify-content: space-between;
+
+    .todo-column-content{
+        vertical-align: middle;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .todo-user{
+        display: inline-block;
+        background: rgba(45, 183, 245, 0.07);
+        margin-right: 10px;
+        padding: 10px;
+        //box-shadow: 0 1px 2px rgb(144, 165, 177);
+    }
+
+    .todo-content{
+        font-size: 24px;
+        font-weight: bold;
+        margin-right: 50px;
+        color: #576067;
+    }
+}
+
+
+
+.todo-item-creator-name{
+    display: inline-block;
+    margin-left: 50px;
+    color : #aaa;
+    font-style:italic;
+    font-size: 12px;
+}
+
+.todo-item-executor-name{
+    display: inline-block;
+    margin-left: 50px;
+    color : #aaa;
+    font-style:italic;
+    font-size: 12px;
+}
+
+.todo-item-content-prefix{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-top: -2px;
+    border: 1px #00abea solid;
+    background: transparent;
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.todo-item-content-prefix.completed{
+    background: #00abea;
+}
+
+.todo-item-delete{
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  font-size: 16px;
+  color :#00abea;
+}
