@@ -26,11 +26,14 @@ var  Page = React.createClass({
     var Entry
     var entry
 
-    //服务器端渲染
-    if( this.props.entry ){
+    //TODO 服务器端渲染
+
+    if( this.props.entry && false){
       Entry = this.props.entry
       entry = React.renderToString(<Entry {...this.props.entryProps}/>)
       entryNode = <div dangerouslySetInnerHTML = {{__html:entry}} id="entry"></div>
+    }else{
+      entryNode = <div id='entry'></div>
     }
 
 

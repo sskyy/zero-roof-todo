@@ -11,8 +11,8 @@ module.exports = Roof.createContainer({
   },
   render : function(){
 
-    console.log( this.data)
-    var mails = this.data.mails.map(function( mail ){
+    //console.log( this.data)
+    var mails = this.props.mails.map(function( mail ){
       console.log( mail ,'....')
       return <div>{mail.get('content')}</div>
     })

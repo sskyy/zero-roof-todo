@@ -1,7 +1,6 @@
 var Roof = require('roof-zeroql')
 require("./input.less")
 
-var Todo = require('../../../../common/types/todo.js')
 
 var At = require('./at.jsx')
 
@@ -15,12 +14,16 @@ var Index = Roof.createContainer({
     this.setState({content : e.target.value, showAt:showAt})
   },
   onKeyUp : function(e){
+    var Todo = this.app.data.getNodeClass('todo')
+    var User =  this.app.data.getNodeClass('user')
 
     if( e.which === 13 ){
       var todo = new Todo({content:this.state.content})
-      this.mentioned.forEach(function( user ){
-        todo.relate(user, 'mentioned')
-      })
+      //this.mentioned.forEach(function( user ){
+      //  todo.relate(user, 'mentioned')
+      //})
+      var fill = new User({ name:"fill"})
+      todo.relate(fill, 'mentioned')
       this.bus.fire('todo.create', todo)
     }
 
@@ -31,7 +34,7 @@ var Index = Roof.createContainer({
   },
   render() {
 
-    var atNode = this.state.showAt ? <At onSelect={this.atSelected}/> : null
+    //var atNode = this.state.showAt ? <At onSelect={this.atSelected}/> : null
 
     return (
       <div className="todo-input">
@@ -41,7 +44,6 @@ var Index = Roof.createContainer({
           onChange={this.onChange}
           placeholder="创建新的todo, 按回车确定"
           />
-        {atNode}
       </div>
     )
   }

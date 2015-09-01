@@ -2,14 +2,23 @@
 
 module.exports = {
   type : 'Todo',
-  primary: 'id',
+  primary: '_id',
   relations: [{
-      name: 'assigned',
-      unique: true
+    name: 'assigned',
+    unique: {
+      to : true
     },
+    to : 'User'
+  },
     {
       name: 'created',
-      unique: true,
-      reverse: true
-  }]
+      unique: {
+        to : true
+      },
+      reverse: true,
+      to : 'User'
+    },{
+      name : 'mentioned',
+      to : 'User'
+    }]
 }
