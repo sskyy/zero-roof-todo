@@ -7,9 +7,10 @@
   "description": "User module for Zero.",
   "zero": {
     "dependencies": {
-      "bus": "^0.0.1",
-      "request": "^0.0.1",
-      "roof": "^0.0.1"
+      "bus": "^0.2.0",
+      "request": "^0.2.0",
+      "roof": "^0.0.1",
+      "taurus" : "^0.0.1"
     }
   },
   "author": "jiamiu",
