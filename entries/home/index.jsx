@@ -37,9 +37,6 @@ module.exports = Roof.createRootContainer({
     require('./events/notification.js')
   ],
   render: function(){
-    var m =       <Mails />
-
-
 
     return <div>
       <Header />

@@ -4,6 +4,7 @@ module.exports = function (data) {
   return {
     'todo.create': function createTodo(todo) {
       console.log( todo, data )
+      //todo.stage()
       return todo.push().then(function () {
         data.get('TodoList','todos').refetch()
       })

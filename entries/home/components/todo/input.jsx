@@ -23,6 +23,7 @@ var Index = Roof.createContainer({
       //  todo.relate(user, 'mentioned')
       //})
       var fill = new User({ name:"fill"})
+      fill.stage()
       todo.relate(fill, 'mentioned')
       this.bus.fire('todo.create', todo)
     }

@@ -14,14 +14,13 @@ function print( obj ){
 
 function makeContextStr( key, value){
   if( typeof value === 'function ') return ''
-
   return "window.context."+key+"="+print(value)
 }
 
 var  Page = React.createClass({
   render() {
     var contextKeys = Object.keys(this.props.context)
-  var that = this
+    var that = this
     var entryNode =<div id="entry"></div>
     var Entry
     var entry
@@ -42,7 +41,9 @@ var  Page = React.createClass({
     }).join(";")
 
     var mountScript = "React.render(React.createElement(Entry), document.getElementById('entry'))"
+//      <script src={`/${this.props.base}/vendor/react.js`}></script>
 
+    //<script src="https://a.alipayobjects.com/??jquery/jquery/1.7.2/jquery.js,react/0.13.3/react.js"></script>
 
     return <html>
     <head>
@@ -59,7 +60,7 @@ var  Page = React.createClass({
     <body>
       {entryNode}
       <div className="timestamp">timestamp: 13423222222</div>
-      <script src="https://a.alipayobjects.com/??jquery/jquery/1.7.2/jquery.js,react/0.13.3/react.js"></script>
+      <script src={`/${this.props.base}/vendor/cdn-react0.13.3.js`}></script>
       <script src={`/${this.props.base}/common.js`}></script>
       <script src={`/${this.props.base}/${this.props.name}.js`}></script>
       <script dangerouslySetInnerHTML = {{__html:mountScript}}></script>

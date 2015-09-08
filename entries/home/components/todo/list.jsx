@@ -8,7 +8,7 @@ module.exports = Roof.createContainer({
   name : 'TodoList',
   rootQueries : {
     todos : `
-      Todo {
+      Todo(_limit:2) {
         ${Item.getQuery('todo')}
       }
     `
@@ -18,7 +18,6 @@ module.exports = Roof.createContainer({
     if( e.keyCode === 13 ){
         id = this.refs.search.getDOMNode().value
         this.timestamp = Date.now()
-      console.log("-------------------",this.timestamp)
         this.props.todos.query.setAttrs(`Todo(id:'${id}')`)
     }
   },
@@ -28,7 +27,8 @@ module.exports = Roof.createContainer({
     <input type='text' ref='search' placeholder='search by id...' onKeyUp={this.search}/>
     </div>
 
-    //console.log('rendering', this.data.todos)
+    //debugger
+    //console.info('rendering', this.data.todos)
     var todoNodes =this.props.todos.map(function(todo){
       console.log("key", todo.get("id"))
       return <Item key={todo.get('id')} todo={todo}></Item>
