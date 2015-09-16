@@ -1,8 +1,8 @@
-
+`JSON:{asdfasdf}`
 
 module.exports = {
   type : 'Todo',
-  primary: '_id',
+  primary: 'id',
   relations: [{
     name: 'assigned',
     unique: {

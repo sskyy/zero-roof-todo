@@ -15,30 +15,13 @@ module.exports = {
     spec : {
       home : {
         serverEvents :  [
-          //require('./entries/home/events/notification')
+          require('./entries/home/events/server-todo')
         ],
         types : [
           require('./common/types/todo.js'),
           require('./common/types/user.js')
         ]
       },
-      registry : {
-        serverEvents :  [
-          require('./entries/registry/events/registry')
-        ],
-        types : [
-          require('./common/types/user.js')
-        ]
-      },
-      management : {
-        serverEvents :  [
-          require('./entries/management/events/user')
-        ],
-        types : [
-          require('./common/types/user.js'),
-          require('./common/types/log.js')
-        ]
-      }
     }
   },
   assets : [{

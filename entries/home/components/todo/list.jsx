@@ -8,10 +8,14 @@ module.exports = Roof.createContainer({
   name : 'TodoList',
   rootQueries : {
     todos : `
-      Todo(_limit:2) {
+      Todo(_limit) {
         ${Item.getQuery('todo')}
       }
     `
+  },
+  componentDidMount : function(){
+    console.info( this.props.todos)
+    this.props.todos.query.setAttr('_limit',10)
   },
   search : function(e){
     var id
@@ -34,7 +38,7 @@ module.exports = Roof.createContainer({
       return <Item key={todo.get('id')} todo={todo}></Item>
     })
 
-    console.log( JSON.stringify(this.props.todos.toArray()), todoNodes, this.timestamp )
+    //console.log( JSON.stringify(this.props.todos.toArray()), todoNodes, this.timestamp )
 
     return <div>
       <div>

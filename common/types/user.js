@@ -1,5 +1,5 @@
 module.exports ={
   type : 'User',
-  primary : '_id',
+  primary : 'id',
   relations : []
 }

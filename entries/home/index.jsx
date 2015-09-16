@@ -23,7 +23,7 @@ var Mails = require('./components/mails.jsx')
 
 //TODO 理一下 roof container 和实例之间的关系，backend 怎么针对每个实例单独生成？
 module.exports = Roof.createRootContainer({
-  backend : '/taurus/query',
+  backend : '/taurus/centurion/query',
   types : [
     require('../../common/types/todo.js'),
     require('../../common/types/user.js'),
@@ -33,9 +33,10 @@ module.exports = Roof.createRootContainer({
     //require('./events/security.js'),
     require('./events/todo.js')
   ],
-  serverEvents : [
-    require('./events/notification.js')
-  ],
+  //serverEvents : [
+  //  require('./events/notification.js'),
+    //require('./events/server-todo.js')
+  //],
   render: function(){
 
     return <div>

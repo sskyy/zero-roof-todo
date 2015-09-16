@@ -1,8 +1,11 @@
 var Roof = require('roof-zeroql')
 require("./input.less")
+var message = require('antd').message
 
 
 var At = require('./at.jsx')
+var NameRegExp = /@[a-zA-Z0-9\u4e00-\u9fa5_-]+$/
+
 
 var Index = Roof.createContainer({
   mentioned : [],
@@ -10,32 +13,36 @@ var Index = Roof.createContainer({
     return {content : '',showAt : false}
   },
   onChange : function(e){
-    var showAt = /@$/.test( e.target.value) ? true : false
+    console.log( NameRegExp.test( e.target.value), e.target.value)
+    var showAt = NameRegExp.test( e.target.value) ? true : false
     this.setState({content : e.target.value, showAt:showAt})
   },
   onKeyUp : function(e){
-    var Todo = this.app.data.getNodeClass('todo')
-    var User =  this.app.data.getNodeClass('user')
+    if(e.which !== 13) return
 
-    if( e.which === 13 ){
-      var todo = new Todo({content:this.state.content})
-      //this.mentioned.forEach(function( user ){
-      //  todo.relate(user, 'mentioned')
-      //})
-      var fill = new User({ name:"fill"})
-      fill.stage()
-      todo.relate(fill, 'mentioned')
-      this.bus.fire('todo.create', todo)
-    }
+    var todo = {content:this.state.content }
+    var mentioned = this.mentioned.map(function( u){
+      return u.get('id')
+    })
+
+    this.bus.fire('todo.create',todo, mentioned).then(function(){
+      message.success('创建成功')
+    }).catch(function(){
+      message.error('创建失败')
+    })
 
   },
   atSelected : function( user ){
     this.mentioned.push( user )
-    this.setState({content : `${this.state.content}${user.get('name')} `, showAt : false})
+    this.setState({content : `${this.state.content.replace(NameRegExp,'@'+user.get('name'))} `, showAt : false})
   },
   render() {
 
-    //var atNode = this.state.showAt ? <At onSelect={this.atSelected}/> : null
+    var atNode = this.state.showAt ? <At
+      name = {this.state.content.match(NameRegExp)[0].slice(1)}
+      onSelect={this.atSelected}
+      /> : null
+
 
     return (
       <div className="todo-input">
@@ -45,6 +52,7 @@ var Index = Roof.createContainer({
           onChange={this.onChange}
           placeholder="创建新的todo, 按回车确定"
           />
+        {atNode}
       </div>
     )
   }

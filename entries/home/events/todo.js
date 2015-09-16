@@ -2,23 +2,23 @@
 
 module.exports = function (data) {
   return {
-    'todo.create': function createTodo(todo) {
-      console.log( todo, data )
-      //todo.stage()
-      return todo.push().then(function () {
+    'todo.create': {fn:function createTodo(rawTodo) {
+      //var Todo = data.getNodeClass('Todo')
+      //var todo = new Todo(rawTodo)
+      //return todo.push().then(function () {
         data.get('TodoList','todos').refetch()
-      })
-      //更新本地数据
-      //source.TodoList.todos.insert( todo )
-    },
+      //})
+    },last:true},
     'todo.destroy' : function destroyTodo( todo ){
       todo.destroy()
 
       return todo.push().then(function(){
         data.get('TodoList','todos').refetch()
       })
+    },
+    'todo.update' : function *updateTodo(){
+      return this.error(406, {msg:'forbidden'})
     }
   }
 };
-
 

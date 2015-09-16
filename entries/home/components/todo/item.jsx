@@ -13,6 +13,9 @@ module.exports = Roof.createContainer({
         mentioned User {
           ${User.getQuery('user')}
         }
+        User created{
+          ${User.getQuery('user')}
+        }
       }
     `},
   verbose : function(){
@@ -21,6 +24,7 @@ module.exports = Roof.createContainer({
         assigned User{
           ${User.getQuery('user')}
         }
+
         mentioned User{
           ${User.getQuery('user')}
         }

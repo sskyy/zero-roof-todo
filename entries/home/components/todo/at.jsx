@@ -1,13 +1,18 @@
 var Roof = require('roof-zeroql')
-require("./input.less")
+require("./at.less")
 
 
 var Index = Roof.createContainer({
   rootQueries : {
-    users : `User {
+    users : `User(name) {
       id,
       name
     }`
+  },
+  componentDidMount:function(){
+    var name = this.props.name
+
+    this.props.users.query.setAttr( 'name', {like : `${name}%`})
   },
   onSelect: function( user ){
     if( this.props.onSelect ){
@@ -17,8 +22,8 @@ var Index = Roof.createContainer({
   render() {
 
     var root = this
-    var users = this.data.users.map(function( user ){
-      return (<div>
+    var users = this.props.users.map(function( user ){
+      return (<div className='at'>
         <a href='javascript:void(0)' onClick={root.onSelect.bind(root, user)}>
           id : {user.get('id')}, name : {user.get('name')}
         </a>
